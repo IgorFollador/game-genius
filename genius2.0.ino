@@ -18,6 +18,10 @@
 #define BOTAO_AMARELO 9
 #define BOTAO_VERMELHO 10
 #define BOTAO_AZUL 11
+//MEMORIA RETENTIVA PARA RECORDE EEPROM
+#define adress_SCORE 0x00 //Endereço onde será armazenada a informaçao dos pontos na memoria EEPROM
+#define adress_configSound 0x04 //Endereço onde será armazenada as informações de configuração de som na memoria EEPROM
+#define som 0x06
 
 #define TAMANHO_SEQUENCIA 50 //DEFINE O NUMERO DE RODADAS
 
@@ -39,12 +43,6 @@ int leds_respondidos = 0;
 int pontos = 0;
 int recorde = 0;
 bool pulaIntro = false;
-
-
-//MEMORIA RETENTIVA PARA RECORDE EEPROM
-int adress_SCORE = 0x00;  //Endereço onde será armazenada a informaçao dos pontos na memoria EEPROM
-int adress_configSound = 0x04;  //Endereço onde será armazenada as informações de configuração de som na memoria EEPROM
-int som = 0x06;
 int BUZZER = EEPROM.read(adress_configSound); //Define o numero da porta digital do buzzer
 //int BUZZER = 13;
 
@@ -52,7 +50,7 @@ void setup() {
   Serial.begin(9600);
   iniciaPortas(); //Chama a função que define as portas
   iniciaDisplay();  //Chama a função que define as portas do display
-  aberturaJogo(); //Chama a função responsavel por
+  aberturaJogo(); //Chama a função responsavel por fazer a introdução do jogo
   iniciaJogo();
 }
 
